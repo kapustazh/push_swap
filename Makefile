@@ -1,66 +1,68 @@
-YELLOW = \033[33m
-GREEN  = \033[32m
-WHITE  = \033[37m
-RESET  = \033[0m
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#              #
+#    Updated: 2025/11/26 22:26:59 by mnestere         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+YELLOW	= \033[33m
+GREEN	= \033[32m
+WHITE	= \033[37m
+RESET	= \033[0m
 
-NAME = push_swap
+CC		= cc
+CFLAGS	= -Wall -Wextra -Werror -g
 
-SRCS = push_swap.c\
-	   push_swap_utils.c\
-	   op_push.c\
-	   op_rev_rotate.c\
-	   op_rotate.c\
-	   op_swap.c\
-	   parse_args.c\
-	   parse_flags.c\
-	   sort_bubble.c\
-	   sort_radix.c\
-	   sort_chunk.c\
-	   sort_low_dis.c\
-	   stack.c\
-	   stack_utils.c
+NAME	= push_swap
 
+SRC_DIR		= src
+INC_DIR		= includes
+LIBFT_DIR	= libft
 
-OBJS = $(SRCS:.c=.o)
+SRCS	= $(SRC_DIR)/push_swap.c \
+		  $(SRC_DIR)/parse.c \
+		  $(SRC_DIR)/stack.c \
+		  $(SRC_DIR)/stack_utils.c \
+		  $(SRC_DIR)/utils.c \
+		  $(SRC_DIR)/sort.c \
+		  $(SRC_DIR)/operations_swap.c \
+		  $(SRC_DIR)/operations_push.c \
+		  $(SRC_DIR)/operations_rotate.c \
+		  $(SRC_DIR)/operations_rev_rotate.c
 
-LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
-FTPRINTF_DIR = ./ft_printf
-FTPRINTF = $(FTPRINTF_DIR)/libftprintf.a
+OBJS	= $(SRCS:.c=.o)
+
+LIBFT	= $(LIBFT_DIR)/libft.a
+
+INCLUDES = -I$(INC_DIR) -I$(LIBFT_DIR)
 
 all: $(NAME)
 
-bonus: all
+$(NAME): $(LIBFT) $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	@echo "$(GREEN) Making$(RESET)"
 
-$(NAME): $(OBJS)
-	@$(MAKE) -C $(LIBFT_DIR)	
-	@$(MAKE) -C $(FTPRINTF_DIR)	
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(FTPRINTF)
-	@echo "$(GREEN) Making push_swap$(RESET)"
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT_DIR)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-clean: 
+clean:
 	@rm -f $(OBJS)
-	@$(MAKE) -C $(LIBFT_DIR)	clean
-	@$(MAKE) -C $(FTPRINTF_DIR)	clean
-	@echo "$(GREEN)Making clean$(RESET)"
+	@$(MAKE) -C $(LIBFT_DIR) clean
+	@echo "$(GREEN) clean$(RESET)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -f $(LIBFT)
-	@rm -f $(FTPRINTF)
-	@echo "$(GREEN)Making fclean$(RESET)"
+	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@echo "$(GREEN) fclean$(RESET)"
 
-# re: fclean all 
-re:
-	@$(MAKE) fclean
-	@$(MAKE) all
-	@$(MAKE) clean
-	@echo "$(GREEN)Making re$(RESET)"
-	
-.PHONY: all bonus clean fclean re
+re: fclean all
+
+.PHONY: all clean fclean re
