@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksmailov <ksmailov@student.42heilbronn.de  +#+  +:+       +#+        */
+/*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 18:46:05 by ksmailov          #+#    #+#             */
-/*   Updated: 2025/10/08 18:46:08 by ksmailov         ###   ########.fr       */
+/*   Created: 2025/10/07 15:49:23 by mnestere          #+#    #+#             */
+/*   Updated: 2025/10/07 15:49:24 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

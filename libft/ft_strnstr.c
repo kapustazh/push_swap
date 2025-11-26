@@ -3,32 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksmailov <ksmailov@student.42heilbronn.de  +#+  +:+       +#+        */
+/*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 17:18:10 by ksmailov          #+#    #+#             */
-/*   Updated: 2025/10/08 17:18:11 by ksmailov         ###   ########.fr       */
+/*   Created: 2025/10/07 15:47:31 by mnestere          #+#    #+#             */
+/*   Updated: 2025/10/13 13:02:19 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+/**
+ * @brief Locates a substring within a string, searching up to a specific length
+ * @param big The string to search in.
+ * @param little The substring to search for.
+ * @param len The maximum number of characters to search in hayastack
+ * @return A pointer to the beginning of the located substring or NULL
+ */
+char	*ft_strnstr(const char *haystick, const char *needle, size_t len)
 {
 	size_t	i;
-	size_t	needle_len;
+	size_t	j;
 
-	if (*needle == '\0')
-		return ((char *)haystack);
-	needle_len = 0;
-	while (needle[needle_len])
-		needle_len++;
+	if (!*needle)
+		return ((char *)haystick);
 	i = 0;
-	while (haystack[i] && (i + needle_len) <= len)
+	while (haystick[i] && i < len)
 	{
-		if (haystack[i] == needle[0])
-			if (ft_strncmp(&haystack[i], needle, needle_len) == 0)
-				return ((char *)&haystack[i]);
+		j = 0;
+		while (needle[j] && i + j < len && haystick[i + j] == needle[j])
+			j++;
+		if (needle[j] == '\0')
+			return ((char *)haystick + i);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

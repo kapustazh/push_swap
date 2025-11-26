@@ -3,16 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksmailov <ksmailov@student.42heilbronn.de  +#+  +:+       +#+        */
+/*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 09:36:45 by ksmailov          #+#    #+#             */
-/*   Updated: 2025/10/08 09:36:47 by ksmailov         ###   ########.fr       */
+/*   Created: 2025/10/13 12:35:27 by mnestere          #+#    #+#             */
+/*   Updated: 2025/10/13 12:35:29 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+#include "libft.h"
+
+int	ft_isalpha(int arg)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-		return (1);
-	return (0);
+	return ((arg >= 'a' && arg <= 'z') || (arg >= 'A' && arg <= 'Z'));
 }
+
+// #include <stdio.h>
+
+// int	main(void)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i <= 47)
+// 	{
+// 		printf("%i ", ft_isalpha(i));
+// 		i++;
+// 	}
+// }

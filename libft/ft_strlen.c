@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksmailov <ksmailov@student.42heilbronn.de  +#+  +:+       +#+        */
+/*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 09:46:44 by ksmailov          #+#    #+#             */
-/*   Updated: 2025/10/08 09:46:46 by ksmailov         ###   ########.fr       */
+/*   Created: 2025/10/07 15:47:56 by mnestere          #+#    #+#             */
+/*   Updated: 2025/10/07 15:47:58 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

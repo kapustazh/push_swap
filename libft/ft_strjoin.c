@@ -3,29 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksmailov <ksmailov@student.42heilbronn.de  +#+  +:+       +#+        */
+/*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 18:02:34 by ksmailov          #+#    #+#             */
-/*   Updated: 2025/10/08 18:02:35 by ksmailov         ###   ########.fr       */
+/*   Created: 2025/10/07 15:48:14 by mnestere          #+#    #+#             */
+/*   Updated: 2025/10/13 13:02:26 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len_s1;
-	size_t	len_s2;
-	char	*res;
+	char	*result;
+	char	*ptr;
 
 	if (!s1 || !s2)
 		return (NULL);
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	res = malloc(sizeof(char) * (len_s1 + len_s2 + 1));
-	if (!res)
+	result = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!result)
 		return (NULL);
-	ft_strlcpy(res, s1, len_s1 + 1);
-	ft_strlcat(res, (char *)s2, len_s1 + len_s2 + 1);
-	return (res);
+	ptr = result;
+	while (*s1)
+		*ptr++ = *s1++;
+	while (*s2)
+		*ptr++ = *s2++;
+	*ptr = '\0';
+	return (result);
 }

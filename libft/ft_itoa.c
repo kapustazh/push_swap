@@ -3,58 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksmailov <ksmailov@student.42heilbronn.de  +#+  +:+       +#+        */
+/*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 18:17:01 by ksmailov          #+#    #+#             */
-/*   Updated: 2025/10/08 18:17:04 by ksmailov         ###   ########.fr       */
+/*   Created: 2025/10/07 15:51:07 by mnestere          #+#    #+#             */
+/*   Updated: 2025/10/13 13:03:26 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+static int	size_checker(long num)
 {
-	char	buf[12];
-	char	*res;
-	long	nb;
-	int		i;
+	int	count;
 
-	nb = n;
-	if (nb == 0)
-		return (ft_strdup("0"));
-	if (nb < 0)
-		nb = -nb;
-	i = -1;
-	while (nb > 0)
+	count = 0;
+	if (num <= 0)
+		count = 1;
+	while (num != 0)
 	{
-		buf[++i] = (nb % 10) + '0';
-		nb /= 10;
+		num /= 10;
+		count++;
 	}
-	if (n < 0)
-		buf[++i] = '-';
-	res = malloc(sizeof(char) * (i + 2));
-	if (!res)
-		return (NULL);
-	while (i >= 0)
-		res[nb++] = buf[i--];
-	res[nb] = '\0';
-	return (res);
+	return (count);
 }
 
-// reusing nb in the end because we are sure that nb = 0 after first loop
+static char	*fill_digits(char *digit, long num)
+{
+	int	len;
+	int	i;
 
-// #include <limits.h>
-// #include <stdio.h>
-//
-// int	main(void)
-// {
-// 	char	*str;
-// 	int		n;
-//
-// 	n = INT_MIN;
-// 	if (!(str = ft_itoa(n)))
-// 		printf("Error");
-// 	else
-// 		printf("%s\n", str);
-// 	free(str);
-// }
+	len = size_checker(num);
+	i = len - 1;
+	digit[len] = '\0';
+	if (num == 0)
+	{
+		digit[0] = '0';
+		return (digit);
+	}
+	if (num < 0)
+	{
+		digit[0] = '-';
+		num = -num;
+	}
+	while (num > 0)
+	{
+		digit[i] = num % 10 + '0';
+		num /= 10;
+		i--;
+	}
+	return (digit);
+}
+
+char	*ft_itoa(int n)
+{
+	long	num;
+	char	*str;
+
+	num = n;
+	str = (char *)malloc(size_checker(num) + 1);
+	if (!str)
+		return (NULL);
+	return (fill_digits(str, num));
+}

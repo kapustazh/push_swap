@@ -3,24 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksmailov <ksmailov@student.42heilbronn.de  +#+  +:+       +#+        */
+/*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/08 10:23:52 by ksmailov          #+#    #+#             */
-/*   Updated: 2025/10/08 10:23:56 by ksmailov         ###   ########.fr       */
+/*   Created: 2025/10/13 12:35:14 by mnestere          #+#    #+#             */
+/*   Updated: 2025/10/13 12:35:15 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <string.h>
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *ptr, size_t num)
 {
-	unsigned char	*str;
+	size_t			i;
+	unsigned char	*dest;
 
-	str = (unsigned char *)s;
-	while (n > 0)
+	dest = (unsigned char *)ptr;
+	i = 0;
+	while (i < num)
 	{
-		*str = 0;
-		str++;
-		n--;
+		dest[i] = 0;
+		i++;
 	}
 }
+
+// int	main(void)
+// {
+// 	char	str[] = "Hallo guys, how are you?";
+// 	ft_bzero(str, 24);
+// 	printf("%s\n", str);
+// 	return (0); 
+// }
