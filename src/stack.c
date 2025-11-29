@@ -43,16 +43,6 @@ void	assign_index(t_stack *stack, int size)
 
 static void	add_number(char *str, t_stack **stack)
 {
-	// long	num;
-	// t_stack	*node;
-
-	// num = parse_long(str);
-	// if (num > INT_MAX || num < INT_MIN)
-	// 	error_exit(stack, NULL);
-	// node = create_node((int)num);
-	// if (!node)
-	// 	error_exit(stack, NULL);
-	// add_to_stack(stack, node);
 	int		i;
 	t_stack	*tmp;
 	long	nb;

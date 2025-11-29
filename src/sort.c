@@ -16,8 +16,8 @@ void	set_index(t_stack *stack_a)
 {
 	t_stack	*ptr;
 	t_stack	*highest;
-	long		value;
-	int			s_size;
+	long	value;
+	int		s_size;
 
 	s_size = stack_len(stack_a);
 	while (--s_size >= 0)
@@ -35,7 +35,7 @@ void	set_index(t_stack *stack_a)
 			ptr = ptr->next;
 		}
 		if (highest == NULL)
-			break;
+			break ;
 		highest->index = s_size;
 	}
 }
@@ -66,8 +66,8 @@ static void	divide_chunks(t_stack **a, t_stack **b, int size)
 		if ((*a)->index <= counter)
 		{
 			pb(a, b);
-			if (*a && ((*a)->index <= counter
-					|| (*a)->index <= counter + chunk_size))
+			if (*a && ((*a)->index <= counter || (*a)->index <= counter
+					+ chunk_size))
 				rb(b);
 			else
 				rr(a, b);
