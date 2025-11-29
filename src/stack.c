@@ -16,28 +16,25 @@ void	assign_index(t_stack *stack, int size)
 {
 	t_stack	*current;
 	t_stack	*max_node;
-	int		max_val;
+	long		max_val;
 
-	while (--size > 0)
+	while (--size >= 0)
 	{
 		current = stack;
-		max_val = INT_MIN;
 		max_node = NULL;
+		max_val = LONG_MIN;
 		while (current)
 		{
-			if (current->value == INT_MIN && current->index == 0)
-				current->index = 1;
-			if (current->value > max_val && current->index == 0)
+			if (current->index == 0 && (long)current->value >= max_val)
 			{
 				max_val = current->value;
 				max_node = current;
-				current = stack;
 			}
-			else
-				current = current->next;
+			current = current->next;
 		}
-		if (max_node != NULL)
-			max_node->index = size;
+		if (max_node == NULL)
+			break;
+		max_node->index = size;
 	}
 }
 
@@ -57,15 +54,15 @@ static void	add_number(char *str, t_stack **stack)
 
 t_stack	*init_stack(char **args)
 {
-	int		idx;
+	int		id;
 	t_stack	*stack;
 
-	idx = 1;
+	id = 1;
 	stack = NULL;
-	while (args[idx])
+	while (args[id])
 	{
-		add_number(args[idx], &stack);
-		idx++;
+		add_number(args[id], &stack);
+		id++;
 	}
 	return (stack);
 }

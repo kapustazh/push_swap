@@ -16,30 +16,27 @@ void	set_index(t_stack *stack_a)
 {
 	t_stack	*ptr;
 	t_stack	*highest;
-	int		value;
-	int		s_size;
+	long		value;
+	int			s_size;
 
 	s_size = stack_len(stack_a);
-	while (--s_size > 0)
+	while (--s_size >= 0)
 	{
 		ptr = stack_a;
-		value = INT_MIN;
 		highest = NULL;
+		value = LONG_MIN;
 		while (ptr)
 		{
-			if (ptr->value == INT_MIN && ptr->index == 0)
-				ptr->index = 1;
-			if (ptr->value > value && ptr->index == 0)
+			if (ptr->index == 0 && (long)ptr->value >= value)
 			{
 				value = ptr->value;
 				highest = ptr;
-				ptr = stack_a;
 			}
-			else
-				ptr = ptr->next;
+			ptr = ptr->next;
 		}
-		if (highest != NULL)
-			highest->index = s_size;
+		if (highest == NULL)
+			break;
+		highest->index = s_size;
 	}
 }
 
