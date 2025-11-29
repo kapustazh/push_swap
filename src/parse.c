@@ -14,18 +14,19 @@
 
 int	is_valid_number(char *arg)
 {
-	int	idx;
+	int	i;
 
-	idx = 0;
-	if (arg[idx] == '-' || arg[idx] == '+')
-		idx++;
-	if (!arg[idx])
-		return (0);
-	while (arg[idx])
+	i = 0;
+	while (arg[i])
 	{
-		if (!ft_isdigit(arg[idx]))
+		if ((arg[i] == '-' || arg[i] == '+') && arg[i + 1] != '\0')
+			i++;
+		if (!ft_isdigit(arg[i]))
 			return (0);
-		idx++;
+		while (ft_isdigit(arg[i]) || arg[i] == ' ')
+			i++;
+		if (arg[i] != '\0')
+			return (0);
 	}
 	return (1);
 }
