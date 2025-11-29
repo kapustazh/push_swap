@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/26 22:22:02 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/29 17:35:03 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,15 @@ static void	add_number(char *str, t_stack **stack)
 
 t_stack	*init_stack(char **args)
 {
-	int		id;
+	int		i;
 	t_stack	*stack;
 
-	id = 1;
+	i = 1;
 	stack = NULL;
-	while (args[id])
+	while (args[i])
 	{
-		add_number(args[id], &stack);
-		id++;
+		add_number(args[i], &stack);
+		i++;
 	}
 	return (stack);
 }

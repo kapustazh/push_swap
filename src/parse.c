@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/29 15:43:29 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/29 17:35:58 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ int	is_valid_number(char *arg)
 
 int	validate_args(char **args)
 {
-	int	id;
+	int	i;
 
-	id = 1;
-	while (args[id])
+	i = 1;
+	while (args[i])
 	{
-		if (!is_valid_number(args[id]))
+		if (!is_valid_number(args[i]))
 			return (0);
-		id++;
+		i++;
 	}
 	if (check_duplicates(args))
 		return (0);
