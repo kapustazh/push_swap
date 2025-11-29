@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 12:55:54 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/29 15:49:38 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/29 17:46:52 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,17 @@ static t_stack	*get_highest(t_stack **stack_a)
 void	sort_three(t_stack **stack_a)
 {
 	t_stack	*highest;
-
-	highest = get_highest(stack_a);
-	if ((*stack_a)->index == highest->index)
-		ra(stack_a);
-	else if ((*stack_a)->next->index == highest->index)
-		rra(stack_a);
-	if ((*stack_a)->index > (*stack_a)->next->index)
-		sa(stack_a);
+	
+	while (check_sorted(*stack_a) == 0)
+	{
+		highest = get_highest(stack_a);
+		if ((*stack_a)->index == highest->index)
+			ra(stack_a);
+		else if ((*stack_a)->next->index == highest->index)
+			rra(stack_a);
+		if ((*stack_a)->index > (*stack_a)->next->index)
+			sa(stack_a);
+	}
 }
 
 void	sort_five(t_stack **stack_a, t_stack **stack_b)

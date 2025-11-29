@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 15:50:51 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/29 17:40:36 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/29 17:45:54 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	sort_stack(t_stack **a, t_stack **b, int size)
 {
 	if (check_sorted(*a))
 		return ;
-	if (size <= 3)
+	else if (size <= 3)
 		sort_three(a);
-	if (size == 5)
+	else if (size == 5)
 		sort_five(a, b);
 	else
 		sort_chunks(a, b, size);
