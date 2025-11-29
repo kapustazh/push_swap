@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_turk.c                                        :+:      :+:    :+:   */
+/*   sort_tiny.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atvii <atvii@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 12:55:54 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/13 00:33:32 by atvii            ###   ########.fr       */
+/*   Updated: 2025/11/29 15:49:38 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,29 @@ static t_stack	*get_highest(t_stack **stack_a)
 
 void	sort_three(t_stack **stack_a)
 {
-	t_stack *highest;
+	t_stack	*highest;
 
 	highest = get_highest(stack_a);
 	if ((*stack_a)->index == highest->index)
 		ra(stack_a);
 	else if ((*stack_a)->next->index == highest->index)
 		rra(stack_a);
+	if ((*stack_a)->index > (*stack_a)->next->index)
+		sa(stack_a);
+}
+
+void	sort_five(t_stack **stack_a, t_stack **stack_b)
+{
+	while (stack_len(*stack_a) > 3)
+	{
+		if ((*stack_a)->index == 0 || (*stack_a)->index == 1)
+			pb(stack_a, stack_b);
+		else
+			ra(stack_a);
+	}
+	sort_three(stack_a);
+	pa(stack_a, stack_b);
+	pa(stack_a, stack_b);
 	if ((*stack_a)->index > (*stack_a)->next->index)
 		sa(stack_a);
 }

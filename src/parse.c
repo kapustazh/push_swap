@@ -6,30 +6,11 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/26 22:22:02 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/29 15:43:29 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-int	is_valid_number(char *arg)
-{
-	int	i;
-
-	i = 0;
-	while (arg[i])
-	{
-		if ((arg[i] == '-' || arg[i] == '+') && arg[i + 1] != '\0')
-			i++;
-		if (!ft_isdigit(arg[i]))
-			return (0);
-		while (ft_isdigit(arg[i]) || arg[i] == ' ')
-			i++;
-		if (arg[i] != '\0')
-			return (0);
-	}
-	return (1);
-}
 
 static int	check_duplicates(char **args)
 {
@@ -59,18 +40,65 @@ static int	check_duplicates(char **args)
 	return (0);
 }
 
+int	is_valid_number(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if ((arg[i] == '-' || arg[i] == '+') && arg[i + 1] != '\0')
+			i++;
+		if (!ft_isdigit(arg[i]))
+			return (0);
+		while (ft_isdigit(arg[i]) || arg[i] == ' ')
+			i++;
+		if (arg[i] != '\0')
+			return (0);
+	}
+	return (1);
+}
+
 int	validate_args(char **args)
 {
-	int	idx;
+	int	id;
 
-	idx = 1;
-	while (args[idx])
+	id = 1;
+	while (args[id])
 	{
-		if (!is_valid_number(args[idx]))
+		if (!is_valid_number(args[id]))
 			return (0);
-		idx++;
+		id++;
 	}
 	if (check_duplicates(args))
 		return (0);
 	return (1);
+}
+
+void	set_index(t_stack *stack_a)
+{
+	t_stack	*ptr;
+	t_stack	*highest;
+	long	value;
+	int		s_size;
+
+	s_size = stack_len(stack_a);
+	while (--s_size >= 0)
+	{
+		ptr = stack_a;
+		highest = NULL;
+		value = LONG_MIN;
+		while (ptr)
+		{
+			if (ptr->index == 0 && (long)ptr->value >= value)
+			{
+				value = ptr->value;
+				highest = ptr;
+			}
+			ptr = ptr->next;
+		}
+		if (highest == NULL)
+			break ;
+		highest->index = s_size;
+	}
 }

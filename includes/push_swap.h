@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 19:31:04 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/26 22:25:43 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/29 17:28:09 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int					check_sorted(t_stack *stack);
 // Sorting //
 void				sort_stack(t_stack **a, t_stack **b, int size);
 void				sort_three(t_stack **stack_a);
+void				sort_five(t_stack **stack_a, t_stack **stack_b);
 void				sort_chunks(t_stack **a, t_stack **b, int size);
 
 #endif
