@@ -57,7 +57,7 @@ int		check_sorted(t_stack *stack);
 
 // Sorting //
 void	sort_stack(t_stack **a, t_stack **b, int size);
-void	sort_three_elem(t_stack **a);
+void	sort_three(t_stack **stack_a);
 void	sort_chunks(t_stack **a, t_stack **b, int size);
 
 #endif

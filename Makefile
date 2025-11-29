@@ -33,7 +33,8 @@ SRCS	= $(SRC_DIR)/push_swap.c \
 		  $(SRC_DIR)/operations_swap.c \
 		  $(SRC_DIR)/operations_push.c \
 		  $(SRC_DIR)/operations_rotate.c \
-		  $(SRC_DIR)/operations_rev_rotate.c
+		  $(SRC_DIR)/operations_rev_rotate.c \
+		  $(SRC_DIR)/sort_three.c
 
 OBJS	= $(SRCS:.c=.o)
 

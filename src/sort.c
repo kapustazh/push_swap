@@ -12,42 +12,35 @@
 
 #include "../includes/push_swap.h"
 
-static t_stack	*find_max_index(t_stack **a)
+void	set_index(t_stack *stack_a)
 {
-	int		max;
-	int		max_idx;
-	t_stack	*node;
-	t_stack	*current;
+	t_stack	*ptr;
+	t_stack	*highest;
+	int		value;
+	int		s_size;
 
-	if (!a || !*a)
-		return (NULL);
-	max = INT_MIN;
-	max_idx = INT_MIN;
-	node = NULL;
-	current = *a;
-	while (current)
+	s_size = stack_len(stack_a);
+	while (--s_size > 0)
 	{
-		if (current->index > max_idx)
+		ptr = stack_a;
+		value = INT_MIN;
+		highest = NULL;
+		while (ptr)
 		{
-			max_idx = current->index;
-			node = current;
+			if (ptr->value == INT_MIN && ptr->index == 0)
+				ptr->index = 1;
+			if (ptr->value > value && ptr->index == 0)
+			{
+				value = ptr->value;
+				highest = ptr;
+				ptr = stack_a;
+			}
+			else
+				ptr = ptr->next;
 		}
-		current = current->next;
+		if (highest != NULL)
+			highest->index = s_size;
 	}
-	return (node);
-}
-
-void	sort_three_elem(t_stack **a)
-{
-	t_stack	*max;
-
-	max = find_max_index(a);
-	if ((*a)->index == max->index)
-		ra(a);
-	else if ((*a)->next->index == max->index)
-		rra(a);
-	if ((*a)->index > (*a)->next->index)
-		sa(a);
 }
 
 static int	calc_sqrt(int num)
@@ -135,12 +128,8 @@ void	sort_chunks(t_stack **a, t_stack **b, int size)
 
 void	sort_stack(t_stack **a, t_stack **b, int size)
 {
-	if (check_sorted(*a))
-		return ;
-	if (size == 2)
-		sa(a);
-	else if (size == 3)
-		sort_three_elem(a);
+	if (size <= 3)
+		sort_three(a);
 	else
 		sort_chunks(a, b, size);
 }
