@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 19:31:04 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/29 17:28:09 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/30 01:41:11 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,19 @@ typedef struct s_stack
 }					t_stack;
 
 // Stack operations //
-void				sa(t_stack **stack_a);
-void				sb(t_stack **stack_b);
-void				ss(t_stack **stack_a, t_stack **stack_b);
-void				pa(t_stack **stack_a, t_stack **stack_b);
-void				pb(t_stack **stack_a, t_stack **stack_b);
-void				ra(t_stack **stack_a);
-void				rb(t_stack **stack_b);
-void				rr(t_stack **stack_a, t_stack **stack_b);
-void				rra(t_stack **stack_a);
-void				rrb(t_stack **stack_b);
-void				rrr(t_stack **stack_a, t_stack **stack_b);
+void				sa(t_stack **stack_a, t_list **result);
+void				sb(t_stack **stack_b, t_list **result);
+void				ss(t_stack **stack_a, t_stack **stack_b, t_list **result);
+void				pa(t_stack **stack_a, t_stack **stack_b, t_list **result);
+void				pb(t_stack **stack_a, t_stack **stack_b, t_list **result);
+void				ra(t_stack **stack_a, t_list **result);
+void			record_operation(t_list **result, const char *op);
+void				rb(t_stack **stack_b, t_list **result);
+void				rr(t_stack **stack_a, t_stack **stack_b, t_list **result);
+void				rra(t_stack **stack_a, t_list **result);
+void				rrb(t_stack **stack_b, t_list **result);
+void				rrr(t_stack **stack_a, t_stack **stack_b, t_list **result);
+void				print_operations(t_list *operations);
 
 // Parsing and validation //
 int					validate_args(char **args);
@@ -56,9 +58,12 @@ void				error_exit(t_stack **a, t_stack **b);
 int					check_sorted(t_stack *stack);
 
 // Sorting //
-void				sort_stack(t_stack **a, t_stack **b, int size);
-void				sort_three(t_stack **stack_a);
-void				sort_five(t_stack **stack_a, t_stack **stack_b);
-void				sort_chunks(t_stack **a, t_stack **b, int size);
+void				sort_stack(t_stack **a, t_stack **b, int size,
+						t_list **result);
+void				sort_three(t_stack **stack_a, t_list **result);
+void				sort_five(t_stack **stack_a, t_stack **stack_b,
+						t_list **result);
+void				sort_chunks(t_stack **a, t_stack **b, int size,
+						t_list **result);
 
 #endif

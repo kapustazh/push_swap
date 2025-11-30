@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 12:55:54 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/29 17:46:52 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/30 00:35:21 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static t_stack	*get_highest(t_stack **stack_a)
 	return (highest_node);
 }
 
-void	sort_three(t_stack **stack_a)
+void	sort_three(t_stack **stack_a, t_list **result)
 {
 	t_stack	*highest;
 	
@@ -49,26 +49,26 @@ void	sort_three(t_stack **stack_a)
 	{
 		highest = get_highest(stack_a);
 		if ((*stack_a)->index == highest->index)
-			ra(stack_a);
+			ra(stack_a, result);
 		else if ((*stack_a)->next->index == highest->index)
-			rra(stack_a);
+			rra(stack_a, result);
 		if ((*stack_a)->index > (*stack_a)->next->index)
-			sa(stack_a);
+			sa(stack_a, result);
 	}
 }
 
-void	sort_five(t_stack **stack_a, t_stack **stack_b)
+void	sort_five(t_stack **stack_a, t_stack **stack_b, t_list **result)
 {
 	while (stack_len(*stack_a) > 3)
 	{
 		if ((*stack_a)->index == 0 || (*stack_a)->index == 1)
-			pb(stack_a, stack_b);
+			pb(stack_a, stack_b, result);
 		else
-			ra(stack_a);
+			ra(stack_a, result);
 	}
-	sort_three(stack_a);
-	pa(stack_a, stack_b);
-	pa(stack_a, stack_b);
+	sort_three(stack_a, result);
+	pa(stack_a, stack_b, result);
+	pa(stack_a, stack_b, result);
 	if ((*stack_a)->index > (*stack_a)->next->index)
-		sa(stack_a);
+		sa(stack_a, result);
 }

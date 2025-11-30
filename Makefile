@@ -23,7 +23,8 @@ SRCS	= $(SRC_DIR)/push_swap.c \
 		  $(SRC_DIR)/operations_rotate.c \
 		  $(SRC_DIR)/operations_rev_rotate.c \
 		  $(SRC_DIR)/sort_tiny.c \
-		  $(SRC_DIR)/sort_chunk.c
+		  $(SRC_DIR)/sort_chunk.c \
+		  $(SRC_DIR)/operations_utils.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -59,4 +60,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
- 
