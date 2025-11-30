@@ -35,20 +35,17 @@ static int	print_pair(char *cur, char *next)
 {
 	if (!cur || !next)
 		return (0);
-	if (ft_strncmp(cur, "rra", 4) == 0
-		&& ft_strncmp(next, "rrb", 4) == 0)
+	if (ft_strncmp(cur, "rra", 4) == 0 && ft_strncmp(next, "rrb", 4) == 0)
 	{
 		ft_putendl_fd("rrr", 1);
 		return (1);
 	}
-	if (ft_strncmp(cur, "ra", 3) == 0
-		&& ft_strncmp(next, "rb", 3) == 0)
+	if (ft_strncmp(cur, "ra", 3) == 0 && ft_strncmp(next, "rb", 3) == 0)
 	{
 		ft_putendl_fd("rr", 1);
 		return (1);
 	}
-	if (ft_strncmp(cur, "sa", 3) == 0
-		&& ft_strncmp(next, "sb", 3) == 0)
+	if (ft_strncmp(cur, "sa", 3) == 0 && ft_strncmp(next, "sb", 3) == 0)
 	{
 		ft_putendl_fd("ss", 1);
 		return (1);

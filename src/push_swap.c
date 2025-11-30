@@ -17,16 +17,15 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 	t_list	*result;
-
 	int		len;
 
 	if (argc < 2)
 		return (0);
 	if (!validate_args(argv))
 		error_exit(NULL, NULL);
-a = NULL;
-b = NULL;
-result = NULL;
+	a = NULL;
+	b = NULL;
+	result = NULL;
 	a = init_stack(argv);
 	len = stack_len(a);
 	assign_index(a, len);

@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 19:31:04 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 01:41:11 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/30 02:33:49 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void				ss(t_stack **stack_a, t_stack **stack_b, t_list **result);
 void				pa(t_stack **stack_a, t_stack **stack_b, t_list **result);
 void				pb(t_stack **stack_a, t_stack **stack_b, t_list **result);
 void				ra(t_stack **stack_a, t_list **result);
-void			record_operation(t_list **result, const char *op);
+void				record_operation(t_list **result, const char *op);
 void				rb(t_stack **stack_b, t_list **result);
 void				rr(t_stack **stack_a, t_stack **stack_b, t_list **result);
 void				rra(t_stack **stack_a, t_list **result);

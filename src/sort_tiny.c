@@ -44,7 +44,7 @@ static t_stack	*get_highest(t_stack **stack_a)
 void	sort_three(t_stack **stack_a, t_list **result)
 {
 	t_stack	*highest;
-	
+
 	while (check_sorted(*stack_a) == 0)
 	{
 		highest = get_highest(stack_a);

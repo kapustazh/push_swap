@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 00:35:20 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/30 03:14:29 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,27 @@
 
 void	assign_index(t_stack *stack, int size)
 {
-	t_stack	*ptr;
-	t_stack	*highest;
-	int		value;
+	t_stack	*current;
+	t_stack	*max_node;
+	long		max_val;
 
-	while (--size > 0)
+	while (--size >= 0)
 	{
-		ptr = stack;
-		value = INT_MIN;
-		highest = NULL;
-		while (ptr)
+		current = stack;
+		max_node = NULL;
+		max_val = LONG_MIN;
+		while (current)
 		{
-			if (ptr->value == INT_MIN && ptr->index == 0)
-				ptr->index = 1;
-			if (ptr->value > value && ptr->index == 0)
+			if (current->index == 0 && (long)current->value >= max_val)
 			{
-				value = ptr->value;
-				highest = ptr;
-				ptr = stack;
+				max_val = current->value;
+				max_node = current;
 			}
-			else
-				ptr = ptr->next;
+			current = current->next;
 		}
-		if (highest != NULL)
-			highest->index = size;
+		if (max_node == NULL)
+			break ;
+		max_node->index = size;
 	}
 }
 
