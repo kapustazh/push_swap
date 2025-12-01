@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_push.c                                  :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 00:49:27 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/30 20:08:51 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-static void	do_push(t_stack **from, t_stack **to)
+int	main(int argc, char **argv)
 {
-	t_stack	*node;
+	t_stack	*a;
+	t_stack	*b;
+	t_list	*result;
+	int		len;
 
-	if (*from == NULL)
-		return ;
-	node = (*from)->next;
-	(*from)->next = *to;
-	*to = *from;
-	*from = node;
-}
-
-void	pa(t_stack **stack_a, t_stack **stack_b, t_list **result)
-{
-	record_operation(result, "pa");
-	do_push(stack_b, stack_a);
-}
-
-void	pb(t_stack **stack_a, t_stack **stack_b, t_list **result)
-{
-	record_operation(result, "pb");
-	do_push(stack_a, stack_b);
+	if (argc < 2)
+		return (0);
+	if (!validate_args(argv))
+		error_exit(NULL, NULL);
+	a = NULL;
+	b = NULL;
+	result = NULL;
+	a = init_stack(argv);
+	len = stack_len(a);
+	assign_index(a, len);
+	sort_stack(&a, &b, len, &result);
+	print_operations(result);
+	ft_lstclear(&result, free);
+	clear_stack(&a);
+	clear_stack(&b);
+	return (0);
 }

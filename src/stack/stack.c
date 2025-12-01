@@ -6,17 +6,17 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 03:14:29 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/30 20:09:15 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	assign_index(t_stack *stack, int size)
 {
 	t_stack	*current;
 	t_stack	*max_node;
-	long		max_val;
+	long	max_val;
 
 	while (--size >= 0)
 	{

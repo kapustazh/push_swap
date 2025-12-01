@@ -1,46 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_swap.c                                  :+:      :+:    :+:   */
+/*   operations_push.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 00:49:32 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/30 20:08:24 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-static void	do_swap(t_stack **stack)
+static void	do_push(t_stack **from, t_stack **to)
 {
-	t_stack	*top;
-	t_stack	*second;
+	t_stack	*node;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (*from == NULL)
 		return ;
-	top = *stack;
-	second = (*stack)->next;
-	top->next = second->next;
-	second->next = top;
-	*stack = second;
+	node = (*from)->next;
+	(*from)->next = *to;
+	*to = *from;
+	*from = node;
 }
 
-void	sa(t_stack **stack_a, t_list **result)
+void	pa(t_stack **stack_a, t_stack **stack_b, t_list **result)
 {
-	record_operation(result, "sa");
-	do_swap(stack_a);
+	record_operation(result, "pa");
+	do_push(stack_b, stack_a);
 }
 
-void	sb(t_stack **stack_b, t_list **result)
+void	pb(t_stack **stack_a, t_stack **stack_b, t_list **result)
 {
-	record_operation(result, "sb");
-	do_swap(stack_b);
-}
-
-void	ss(t_stack **stack_a, t_stack **stack_b, t_list **result)
-{
-	record_operation(result, "ss");
-	do_swap(stack_a);
-	do_swap(stack_b);
+	record_operation(result, "pb");
+	do_push(stack_a, stack_b);
 }

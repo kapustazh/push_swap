@@ -6,11 +6,11 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 12:55:54 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 00:35:21 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/30 20:09:02 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 /**
  * @brief Finds the node with the highest index in the stack.
@@ -45,16 +45,13 @@ void	sort_three(t_stack **stack_a, t_list **result)
 {
 	t_stack	*highest;
 
-	while (check_sorted(*stack_a) == 0)
-	{
-		highest = get_highest(stack_a);
-		if ((*stack_a)->index == highest->index)
-			ra(stack_a, result);
-		else if ((*stack_a)->next->index == highest->index)
-			rra(stack_a, result);
-		if ((*stack_a)->index > (*stack_a)->next->index)
-			sa(stack_a, result);
-	}
+	highest = get_highest(stack_a);
+	if ((*stack_a)->index == highest->index)
+		ra(stack_a, result);
+	else if ((*stack_a)->next->index == highest->index)
+		rra(stack_a, result);
+	if ((*stack_a)->index > (*stack_a)->next->index)
+		sa(stack_a, result);
 }
 
 void	sort_five(t_stack **stack_a, t_stack **stack_b, t_list **result)

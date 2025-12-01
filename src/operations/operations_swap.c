@@ -1,48 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_rotate.c                                :+:      :+:    :+:   */
+/*   operations_swap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 00:49:43 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/30 20:08:39 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-static void	do_rotate(t_stack **stack)
+static void	do_swap(t_stack **stack)
 {
-	t_stack	*head;
-	t_stack	*tail;
+	t_stack	*top;
+	t_stack	*second;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
-	head = *stack;
-	*stack = (*stack)->next;
-	tail = *stack;
-	while (tail->next)
-		tail = tail->next;
-	head->next = NULL;
-	tail->next = head;
+	top = *stack;
+	second = (*stack)->next;
+	top->next = second->next;
+	second->next = top;
+	*stack = second;
 }
 
-void	ra(t_stack **stack_a, t_list **result)
+void	sa(t_stack **stack_a, t_list **result)
 {
-	record_operation(result, "ra");
-	do_rotate(stack_a);
+	record_operation(result, "sa");
+	do_swap(stack_a);
 }
 
-void	rb(t_stack **stack_b, t_list **result)
+void	sb(t_stack **stack_b, t_list **result)
 {
-	record_operation(result, "rb");
-	do_rotate(stack_b);
+	record_operation(result, "sb");
+	do_swap(stack_b);
 }
 
-void	rr(t_stack **stack_a, t_stack **stack_b, t_list **result)
+void	ss(t_stack **stack_a, t_stack **stack_b, t_list **result)
 {
-	record_operation(result, "rr");
-	do_rotate(stack_a);
-	do_rotate(stack_b);
+	record_operation(result, "ss");
+	do_swap(stack_a);
+	do_swap(stack_b);
 }

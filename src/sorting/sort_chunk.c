@@ -6,11 +6,12 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 02:33:24 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 02:36:31 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/30 22:39:34 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
+
 /*
  * calc_sqrt:
  *  Returns the integer square root of `num`,
@@ -97,7 +98,8 @@ static int	count_rotations(t_stack *stack, int size)
  *    1) Use divide_chunks to push all elements from A to B in chunks.
  *    2) Then, while there are elements left:
  *         - Find how far the current max index (size - 1) is from top of B.
- *         - Decide if it’s cheaper to rotate B forwards (rb) or backwards (rrb).
+ *        
+	- Decide if it’s cheaper to rotate B forwards (rb) or backwards (rrb).
  *         - Rotate B until that max is on top.
  *         - Push it back to A (pa).
  *         - Decrease size (one more element is correctly placed in A).
