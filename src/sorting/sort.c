@@ -6,13 +6,13 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 15:50:51 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 20:09:05 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/02 18:22:07 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	sort_stack(t_stack **a, t_stack **b, int size, t_list **result)
+void	sort_stack(t_stack **a, t_stack **b, int size, t_stack **result)
 {
 	if (check_sorted(*a))
 		return ;

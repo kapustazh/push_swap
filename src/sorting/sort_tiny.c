@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 12:55:54 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 20:09:02 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/02 18:22:23 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static t_stack	*get_highest(t_stack **stack_a)
 	return (highest_node);
 }
 
-void	sort_three(t_stack **stack_a, t_list **result)
+void	sort_three(t_stack **stack_a, t_stack **result)
 {
 	t_stack	*highest;
 
@@ -54,7 +54,7 @@ void	sort_three(t_stack **stack_a, t_list **result)
 		sa(stack_a, result);
 }
 
-void	sort_five(t_stack **stack_a, t_stack **stack_b, t_list **result)
+void	sort_five(t_stack **stack_a, t_stack **stack_b, t_stack **result)
 {
 	while (stack_len(*stack_a) > 3)
 	{

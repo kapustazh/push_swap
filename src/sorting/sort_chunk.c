@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 02:33:24 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/02 02:35:23 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/02 18:22:41 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	calc_sqrt(int num)
  *  Divides stack A into chunks and pushes all elements to stack B.
  *  Uses a chunk width based on the square root of the size.
  */
-static void	divide_chunks(t_stack **a, t_stack **b, int size, t_list **result)
+static void	divide_chunks(t_stack **a, t_stack **b, int size, t_stack **result)
 {
 	int	current_min_index;
 	int	chunk_width;
@@ -84,7 +84,7 @@ static int	count_rotations(t_stack *stack, int size)
  *  2. Pulls elements back from B to A in sorted order,
  *     choosing the optimal rotation direction each time.
  */
-void	sort_chunks(t_stack **a, t_stack **b, int size, t_list **result)
+void	sort_chunks(t_stack **a, t_stack **b, int size, t_stack **result)
 {
 	int	forward_rotations;
 	int	reverse_rotations;
