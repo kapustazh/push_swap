@@ -6,18 +6,12 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 02:33:24 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 22:39:34 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/02 02:35:23 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-/*
- * calc_sqrt:
- *  Returns the integer square root of `num`,
- *  i.e. the largest integer `x` such that x*x <= num.
- *  Used to decide a chunk size based on the input size.
- */
 static int	calc_sqrt(int num)
 {
 	long	sqrt_candidate;
@@ -34,15 +28,8 @@ static int	calc_sqrt(int num)
 
 /*
  * divide_chunks:
- *  Splits stack A into chunks and pushes all elements to stack B.
- *  - `current_min_index` tracks the next smallest index that should move.
- *  - `chunk_width` defines how wide each chunk (index range) is.
- *  Elements with index:
- *    - <= current_min_index: pushed to B and B is rotated to sink them.
- *    - within (current_min_index, current_min_index + chunk_width]:
- *        pushed to B without rotation.
- *    - greater: A is rotated to search for better candidates.
- *  This arrangement makes it easier later to pull back elements from B in order.
+ *  Divides stack A into chunks and pushes all elements to stack B.
+ *  Uses a chunk width based on the square root of the size.
  */
 static void	divide_chunks(t_stack **a, t_stack **b, int size, t_list **result)
 {
@@ -75,9 +62,8 @@ static void	divide_chunks(t_stack **a, t_stack **b, int size, t_list **result)
 
 /*
  * count_rotations:
- *  Counts how many forward rotations (rb) are needed
- *  to bring the element with index (size - 1) to the top of `stack`.
- *  This is used to choose between rotating forward or reverse.
+ *  Counts how many forward rotations are needed in stack B
+ *  to bring the element with index size - 1 to the top.
  */
 static int	count_rotations(t_stack *stack, int size)
 {
@@ -91,19 +77,12 @@ static int	count_rotations(t_stack *stack, int size)
 	}
 	return (forward_rotations);
 }
-
 /*
  * sort_chunks:
- *  High-level algorithm:
- *    1) Use divide_chunks to push all elements from A to B in chunks.
- *    2) Then, while there are elements left:
- *         - Find how far the current max index (size - 1) is from top of B.
- *        
-	- Decide if it’s cheaper to rotate B forwards (rb) or backwards (rrb).
- *         - Rotate B until that max is on top.
- *         - Push it back to A (pa).
- *         - Decrease size (one more element is correctly placed in A).
- *  After the loop, stack A is sorted in ascending order by index/value.
+ *  Sorts the stack using a chunk-based approach.
+ *  1. Divides stack A into chunks and pushes all elements to stack B.
+ *  2. Pulls elements back from B to A in sorted order,
+ *     choosing the optimal rotation direction each time.
  */
 void	sort_chunks(t_stack **a, t_stack **b, int size, t_list **result)
 {
