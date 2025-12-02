@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 02:33:24 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/02 02:35:23 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/02 18:47:06 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ static int	count_rotations(t_stack *stack, int size)
 	}
 	return (forward_rotations);
 }
+
 /*
  * sort_chunks:
  *  Sorts the stack using a chunk-based approach.
