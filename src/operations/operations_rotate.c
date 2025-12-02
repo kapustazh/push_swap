@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/02 18:24:25 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/30 20:08:35 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,19 @@ static void	do_rotate(t_stack **stack)
 	tail->next = head;
 }
 
-void	ra(t_stack **stack_a, t_stack **result)
+void	ra(t_stack **stack_a, t_list **result)
 {
 	record_operation(result, "ra");
 	do_rotate(stack_a);
 }
 
-void	rb(t_stack **stack_b, t_stack **result)
+void	rb(t_stack **stack_b, t_list **result)
 {
 	record_operation(result, "rb");
 	do_rotate(stack_b);
 }
 
-void	rr(t_stack **stack_a, t_stack **stack_b, t_stack **result)
+void	rr(t_stack **stack_a, t_stack **stack_b, t_list **result)
 {
 	record_operation(result, "rr");
 	do_rotate(stack_a);

@@ -6,15 +6,15 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 00:10:38 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/02 18:25:10 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/11/30 20:09:29 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	record_operation(t_stack **result, const char *op)
+void	record_operation(t_list **result, const char *op)
 {
-	t_stack	*node;
+	t_list	*node;
 	char	*dup;
 
 	if (!result || !op)
@@ -53,17 +53,17 @@ static int	print_pair(char *cur, char *next)
 	return (0);
 }
 
-void	print_operations(t_stack *operations)
+void	print_operations(t_list *operations)
 {
 	char	*cur;
 	char	*next;
 
 	while (operations)
 	{
-		cur = (char *)operations->value;
+		cur = (char *)operations->content;
 		next = NULL;
 		if (operations->next)
-			next = (char *)operations->next->value;
+			next = (char *)operations->next->content;
 		if (print_pair(cur, next))
 			operations = operations->next->next;
 		else
