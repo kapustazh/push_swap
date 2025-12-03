@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/03 23:20:13 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/03 23:38:37 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	main(int argc, char **argv)
 {
 	char	**args;
 
+	if (argc < 2)
+		return (0);
 	args = parse_args(argc, argv);
 	sort_and_print(args);
 	if (argc == 2)
