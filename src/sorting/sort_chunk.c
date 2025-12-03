@@ -6,11 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 02:33:24 by mnestere          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/12/02 18:47:06 by mnestere         ###   ########.fr       */
-=======
-/*   Updated: 2025/12/03 23:06:50 by mnestere         ###   ########.fr       */
->>>>>>> 795ad54 (Title: Handle single quoted input via ft_split; fix first-token drop)
+/*   Updated: 2025/12/03 23:29:22 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
