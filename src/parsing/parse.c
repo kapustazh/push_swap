@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/03 19:05:32 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/03 23:26:09 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	is_valid_number(char *arg)
 {
 	int	i;
 
+	if (!arg || arg[0] == '\0')
+		return (0);
 	i = 0;
 	while (arg[i])
 	{
@@ -63,7 +65,7 @@ int	validate_args(char **args)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (args[i])
 	{
 		if (!is_valid_number(args[i]))

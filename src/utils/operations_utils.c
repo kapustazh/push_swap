@@ -6,12 +6,26 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 00:10:38 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 20:09:29 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/03 23:09:41 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+void ft_free_split(char **one_line)
+{
+	int	i;
+
+	i = 0;
+	if (!one_line || one_line == NULL)
+		return ;
+	while (one_line[i])
+	{
+		free(one_line[i]);
+		i++;
+	}
+	free(one_line);
+}
 void	record_operation(t_list **result, const char *op)
 {
 	t_list	*node;

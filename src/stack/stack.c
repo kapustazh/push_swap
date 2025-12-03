@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 20:09:15 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/03 23:14:22 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_stack	*init_stack(char **args)
 	int		i;
 	t_stack	*stack;
 
-	i = 1;
+	i = 0;
 	stack = NULL;
 	while (args[i])
 	{

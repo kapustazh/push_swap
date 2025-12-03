@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 19:31:04 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 02:33:49 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/03 23:06:00 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ long				parse_long(const char *str);
 t_stack				*create_node(int num);
 int					stack_len(t_stack *stack);
 void				add_to_stack(t_stack **stack, t_stack *new);
+void				ft_free_split(char **one_line);
 
 /// General utilities //
 void				clear_stack(t_stack **stack);
