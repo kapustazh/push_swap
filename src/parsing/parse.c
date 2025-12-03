@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 20:08:47 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/03 19:05:32 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,30 +75,3 @@ int	validate_args(char **args)
 	return (1);
 }
 
-void	set_index(t_stack *stack_a)
-{
-	t_stack	*ptr;
-	t_stack	*highest;
-	long	value;
-	int		s_size;
-
-	s_size = stack_len(stack_a);
-	while (--s_size >= 0)
-	{
-		ptr = stack_a;
-		highest = NULL;
-		value = LONG_MIN;
-		while (ptr)
-		{
-			if (ptr->index == 0 && (long)ptr->value >= value)
-			{
-				value = ptr->value;
-				highest = ptr;
-			}
-			ptr = ptr->next;
-		}
-		if (highest == NULL)
-			break ;
-		highest->index = s_size;
-	}
-}
