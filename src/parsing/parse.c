@@ -6,19 +6,19 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/04 15:46:06 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/04 17:38:12 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int	check_duplicates(char **args)
+static int	check_duplicates(char **args, int *need_free)
 {
 	t_stack	*tmp;
 	t_stack	*current;
 	t_stack	*compare;
 
-	tmp = init_stack(args);
+	tmp = init_stack(args, *need_free);
 	if (!tmp)
 		return (1);
 	current = tmp;
@@ -39,35 +39,26 @@ static int	check_duplicates(char **args)
 	clear_stack(&tmp);
 	return (0);
 }
-// static int in_bound(char *arg)
-// {
-//     long num;
-	
-// 	num = parse_long(arg); 
-//     if (num > INT_MAX || num < INT_MIN)
-//         return 0;
-//     return 1;
-// }
 
 int	is_valid_number(char *arg)
 {
 	int	i;
 
+	i = 0;
 	if (!arg || !arg[0])
 		return (0);
-	i = 0;
-	if (arg[i] == '-' || arg[i] == '+')
+	if (arg[i] == '+' || arg[i] == '-')
 		i++;
 	if (!ft_isdigit(arg[i]))
 		return (0);
-	while (ft_isdigit(arg[i]))
+	while (arg[i] && ft_isdigit(arg[i]))
 		i++;
 	if (arg[i] != '\0')
 		return (0);
 	return (1);
 }
 
-char	**parse_args(int argc, char **argv)
+char	**parse_args(int argc, char **argv, int *need_free)
 {
 	char	**args;
 
@@ -76,19 +67,23 @@ char	**parse_args(int argc, char **argv)
 		args = ft_split(argv[1], ' ');
 		if (!args)
 			error_exit(NULL, NULL);
+		*need_free = 1;
 	}
 	else
-		args = argv + 1;
-	if (!validate_args(args))
 	{
-		if (argc == 2)
+		args = argv + 1;
+		*need_free = 0;
+	}
+	if (!validate_args(args, need_free))
+	{
+		if (*need_free)
 			ft_free_split(args);
 		error_exit(NULL, NULL);
 	}
 	return (args);
 }
 
-int	validate_args(char **args)
+int	validate_args(char **args, int *need_free)
 {
 	int	i;
 
@@ -99,7 +94,7 @@ int	validate_args(char **args)
 			return (0);
 		i++;
 	}
-	if (check_duplicates(args))
+	if (check_duplicates(args, need_free))
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/04 15:40:24 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:49:57 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	assign_index(t_stack *stack, int size)
 	}
 }
 
-static void	add_number(char *str, t_stack **stack)
+static void	add_number(char *str, t_stack **stack, char **to_free)
 {
 	int		i;
 	t_stack	*tmp;
@@ -51,7 +51,10 @@ static void	add_number(char *str, t_stack **stack)
 		{
 			nb = parse_long(&str[i]);
 			if (nb > INT_MAX || nb < INT_MIN)
+			{
+				ft_free_split(to_free);
 				error_exit(stack, NULL);
+			}
 			tmp = create_node((int)nb);
 			if (!tmp)
 				error_exit(stack, NULL);
@@ -64,7 +67,7 @@ static void	add_number(char *str, t_stack **stack)
 	}
 }
 
-t_stack	*init_stack(char **args)
+t_stack	*init_stack(char **args, int need_free)
 {
 	int		i;
 	t_stack	*stack;
@@ -73,7 +76,10 @@ t_stack	*init_stack(char **args)
 	stack = NULL;
 	while (args[i])
 	{
-		add_number(args[i], &stack);
+		if (need_free)
+			add_number(args[i], &stack, args);
+		else
+			add_number(args[i], &stack, NULL);
 		i++;
 	}
 	return (stack);

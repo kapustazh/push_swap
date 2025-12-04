@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 19:31:04 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/04 13:35:48 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/04 16:50:10 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+#include <stdio.h>
 
 typedef struct s_stack
 {
@@ -41,12 +43,12 @@ void				rrr(t_stack **stack_a, t_stack **stack_b, t_list **result);
 void				print_operations(t_list *operations);
 
 // Parsing and validation //
-int					validate_args(char **args);
+int					validate_args(char **args, int *need_free);
 int					is_valid_number(char *arg);
-char				**parse_args(int argc, char **argv);
+char				**parse_args(int argc, char **argv, int *need_free);
 
 // Stack utilities //
-t_stack				*init_stack(char **args);
+t_stack				*init_stack(char **args, int need_free);
 void				assign_index(t_stack *stack, int size);
 long				parse_long(const char *str);
 t_stack				*create_node(int num);
