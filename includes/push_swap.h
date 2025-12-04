@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 19:31:04 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/04 16:50:10 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/04 18:08:01 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-#include <stdio.h>
 
 typedef struct s_stack
 {
