@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/03 23:52:45 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/04 01:49:01 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,3 @@ int	validate_args(char **args)
 		return (0);
 	return (1);
 }
-
