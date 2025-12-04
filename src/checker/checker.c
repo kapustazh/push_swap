@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 20:19:21 by mnestere          #+#    #+#             */
-/*   Updated: 2025/11/30 22:16:29 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/04 13:30:22 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 
+	argv = argv +  1;
 	if (argc < 2)
 		return (0);
 	if (!validate_args(argv))
