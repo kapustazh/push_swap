@@ -22,17 +22,17 @@ BONUS_OBJ = $(BONUS_SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(BONUS_OBJ)
-	$(AR) rcs $(NAME) $(OBJ) $(BONUS_OBJ)
+	@$(AR) rcs $(NAME) $(OBJ) $(BONUS_OBJ)
 
 bonus: all
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ) $(BONUS_OBJ)
+	@$(RM) $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
