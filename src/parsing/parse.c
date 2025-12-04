@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 22:00:00 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/04 01:49:01 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/04 13:36:29 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,23 @@ int	is_valid_number(char *arg)
 			return (0);
 	}
 	return (1);
+}
+
+char	**parse_args(int argc, char **argv)
+{
+	char	**args;
+
+	if (argc == 2)
+	{
+		args = ft_split(argv[1], ' ');
+		if (!args)
+			error_exit(NULL, NULL);
+	}
+	else
+		args = argv + 1;
+	if (!validate_args(args))
+		error_exit(NULL, NULL);
+	return (args);
 }
 
 int	validate_args(char **args)

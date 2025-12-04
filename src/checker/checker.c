@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 20:19:21 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/04 13:30:22 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/04 13:39:59 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,17 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	char	**args;
 
-	argv = argv +  1;
 	if (argc < 2)
 		return (0);
-	if (!validate_args(argv))
+	args = parse_args(argc, argv);
+	if (!validate_args(args))
 	{
 		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
-	a = init_stack(argv);
+	a = init_stack(args);
 	if (!a)
 	{
 		ft_putstr_fd("Error\n", 2);
@@ -34,5 +35,7 @@ int	main(int argc, char **argv)
 	}
 	b = NULL;
 	read_operations(&a, &b);
+	if (argc == 2)
+		ft_free_split(args);
 	return (0);
 }

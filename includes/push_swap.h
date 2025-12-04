@@ -6,7 +6,7 @@
 /*   By: mnestere <mnestere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 19:31:04 by mnestere          #+#    #+#             */
-/*   Updated: 2025/12/03 23:06:00 by mnestere         ###   ########.fr       */
+/*   Updated: 2025/12/04 13:35:48 by mnestere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void				print_operations(t_list *operations);
 // Parsing and validation //
 int					validate_args(char **args);
 int					is_valid_number(char *arg);
+char				**parse_args(int argc, char **argv);
 
 // Stack utilities //
 t_stack				*init_stack(char **args);
